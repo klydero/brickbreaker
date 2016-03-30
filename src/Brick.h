@@ -41,6 +41,7 @@ public:
     int score;
     
     bool isNull;
+    bool shouldDestroy();
     
     
 protected:

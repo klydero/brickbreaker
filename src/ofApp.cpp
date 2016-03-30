@@ -5,7 +5,7 @@ void ofApp::setup(){
     ofBackground(0);
     paddle.setup();
     ball.setup();
-    brick = Brick(1, 100, ofColor(255, 0, 0), ofVec2f(ofGetWidth()/2, ofGetHeight()/4), 100, 30);
+    
     gm.setup();
 }
 
@@ -13,7 +13,6 @@ void ofApp::setup(){
 void ofApp::update(){
     paddle.move();
     ball.move(paddle);
-    brick.update(ball);
     gm.update(ball);
 }
 
@@ -22,7 +21,6 @@ void ofApp::draw(){
     
     ball.draw();
     paddle.draw();
-    brick.draw();
     gm.draw();
 }
 

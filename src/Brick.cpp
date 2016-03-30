@@ -15,6 +15,8 @@ Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int 
     width = _width;
     height = _height;
     
+    hitTimes = 0;
+    
     isNull = false;
 }
 
@@ -25,6 +27,8 @@ Brick::~Brick() {
 void Brick::setup(){
     
 }
+
+//returns true if brick has been destroyed
 
 void Brick::update(Ball& ball){
     
@@ -43,7 +47,13 @@ void Brick::update(Ball& ball){
         } else {
             ball.direction.x *= -1;
         }
+        
+        hitTimes ++;
+        
+    
     }
+    
+    
 }
 
 void Brick::draw(){
@@ -54,6 +64,7 @@ void Brick::draw(){
 }
 
 void Brick::hit(){
+    
     
 }
 
@@ -104,3 +115,13 @@ bool Brick::_isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition) {
     return ((point2.x - point1.x) * (ballPosition.y - point1.y) - (point2.y - point1.y) * (ballPosition.x - point1.x)) > 0;
 }
 
+
+bool Brick::shouldDestroy(){
+    
+    if (hitTimes == toughness){
+        return true;
+    }
+
+    return false;
+    
+}

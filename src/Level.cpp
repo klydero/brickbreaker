@@ -22,6 +22,17 @@ void Level::update(Ball& ball){
             rows[i][j].update(ball);
         }
     }
+    
+    for (int i = 0; i < rows.size(); i++) {
+        for(int j = 0; j < rows[i].size(); j++) {
+            if (rows[i][j].shouldDestroy()){
+                rows[i].erase(rows[i].begin()+ j);
+                
+                
+            }
+            
+        }
+    }
 }
 
 void Level::draw(){

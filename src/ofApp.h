@@ -26,7 +26,6 @@ class ofApp : public ofBaseApp{
     
         Ball ball;
         Paddle paddle;
-        Brick brick;
         GameManager gm;
 
 };

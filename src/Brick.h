@@ -43,6 +43,7 @@ public:
     std::vector<Particles>particles;
     
     bool isNull;
+    bool shouldDestroy();
     
     
 protected:

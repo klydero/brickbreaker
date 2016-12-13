@@ -12,6 +12,7 @@
 #include "ofMain.h"
 #include "Paddle.h"
 #include "ofBaseApp.h"
+#include "Particles.h"
 
 class Ball{
     
@@ -31,6 +32,8 @@ public:
     ofVec2f direction;
     ofColor color;
     float bounciness;
+    std::vector<Particles> particles;
+    
     
     bool intersectsRect(float cx,
                         float cy,
@@ -39,6 +42,7 @@ public:
                         float top,
                         float right,
                         float bottom) const;
+    
     
     protected:
     

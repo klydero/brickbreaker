@@ -22,11 +22,15 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        void onGameOver();
     
         Ball ball;
         Paddle paddle;
-        Brick brick;
         GameManager gm;
+    
+    ofTrueTypeFont scoreFont;
+    ofImage backgroundImage;
+    ofSoundPlayer brickBreakerMusic;
+    
+    
 
 };

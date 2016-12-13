@@ -20,7 +20,7 @@ public:
     ~Level();
     
     
-    void update(Ball& ball);
+    void update(Ball& ball, int& score, Paddle& paddle);
     void draw();
 
     vector<vector<Brick> > rows;

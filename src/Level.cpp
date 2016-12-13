@@ -16,10 +16,20 @@ Level::Level(vector<vector<Brick> > _rows){
     
 }
 
-void Level::update(Ball& ball){
+void Level::update(Ball& ball, int& score, Paddle& paddle){
     for (int i = 0; i < rows.size(); i++) {
         for(int j = 0; j < rows[i].size(); j++) {
             rows[i][j].update(ball);
+        }
+    }
+    
+    for (int i = 0; i < rows.size(); i++) {
+        for(int j = 0; j < rows[i].size(); j++) {
+            if (rows[i][j].shouldDestroy()) {
+                 score += rows[i][j].score;
+                rows[i].erase(rows[i].begin() + j);
+                cout << score << endl;
+            }
         }
     }
 }

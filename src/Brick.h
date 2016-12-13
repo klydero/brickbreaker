@@ -31,6 +31,7 @@ public:
     void setup();
     void update(Ball& ball);
     void draw();
+    bool shouldDestroy();
     BRICK_SIDE getCollisionSide(const Ball& ball);
     
     int toughness;
@@ -39,6 +40,7 @@ public:
     int width;
     int height;
     int score;
+    std::vector<Particles>particles;
     
     bool isNull;
     

@@ -19,7 +19,7 @@ class GameManager {
     public:
     
     void setup();
-    void update(Ball& ball);
+    void update(Ball& ball, Paddle& paddle);
     void draw();
     void launchBall();
     void placeBallForLaunch();
@@ -30,15 +30,18 @@ class GameManager {
     
     void mousePressed(int x, int y, int button);
     
-    ofEvent<void> gameOverEvent;
+    bool isGameOver();
     
+    int score;
     LevelManager lm;
     
 protected:
     
     ofImage _menuScreen;
+    ofImage _endScreen;
     
     bool _showMenu;
+    bool _showEnd;
     
 };
 

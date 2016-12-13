@@ -1,4 +1,4 @@
-//
+    //
 //  Ball.cpp
 //  BrickBreakerGame
 //
@@ -10,9 +10,9 @@
 
 void Ball::setup() {
     
-    color.set(170, 240, 0);
+    color.set(138,0,184);
     size = 20;
-    speed = 4;
+    speed = 6;
     position.set(ofGetWidth(), ofGetHeight());
     direction.set(1, 1);
 }
@@ -38,7 +38,29 @@ void Ball::move(const Paddle& paddle ) {
                               paddle.position.x + paddle.width * 0.5,
                               paddle.position.y + paddle.height * 0.5)) {
             
+            int numberOfParticles = 20;
+            
+            
+            for (int i = 0; i < numberOfParticles; i++) {
+                
+                
+                Particles p;
+                p.position.x = position.x;
+                p.position.y = position.y;
+                
+                p.velocity.x = ofRandom(-10, 10);
+                p.velocity.y = ofRandom(-10, 10);
+                
+                p.drag = 1;
+                
+                particles.push_back(p);
+                
+                
+            }
+
+            
             direction.y *= -1;
+            
         }
         
         position.x += speed * direction.x;
@@ -58,6 +80,40 @@ void Ball::move(const Paddle& paddle ) {
 }
 
 void Ball::draw() {
+    
+    auto particleIterator = particles.begin();
+    
+    
+    
+    while (particleIterator != particles.end())
+        
+    {
+        
+        particleIterator->update();
+        
+        
+        
+        if (particleIterator->age > ofRandom(10, 50))
+            
+        {
+            
+            particleIterator = particles.erase(particleIterator);
+            
+        }
+        
+        else
+            
+        {
+            
+            ofDrawRectangle(particleIterator-> position.x, particleIterator->position.y, 20, 20);
+            
+            ++particleIterator;
+            
+        }
+        
+    }
+    
+
     
     ofPushStyle();
     ofSetColor(color);

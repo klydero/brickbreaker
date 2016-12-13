@@ -2,28 +2,42 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofBackground(0);
+   // ofSetDataPathRoot("../bin/data/");
+    
+    //ofBackgroundGradient(ofColor::coral, ofColor::lavender);
     paddle.setup();
     ball.setup();
-    brick = Brick(1, 100, ofColor(255, 0, 0), ofVec2f(ofGetWidth()/2, ofGetHeight()/4), 100, 30);
     gm.setup();
+    scoreFont.load("Bitwise.ttf", 20);
+    backgroundImage.load("background.jpg");
+    
+    brickBreakerMusic.load("sounds/brickbreakeraudio.mp3");
+    brickBreakerMusic.setVolume(1.0f);
+    brickBreakerMusic.play();
+    brickBreakerMusic.setLoop(true);
+    
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     paddle.move();
     ball.move(paddle);
-    brick.update(ball);
-    gm.update(ball);
+    gm.update(ball, paddle);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
+    backgroundImage.draw(0,0);
+    
+    
     ball.draw();
     paddle.draw();
-    brick.draw();
     gm.draw();
+    
+    ofSetColor(255);
+    scoreFont.drawString("Score: " + ofToString(gm.score), 20, 20);
 }
 
 //--------------------------------------------------------------
@@ -52,6 +66,10 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     gm.mousePressed( mouseX,  mouseY, button);
+    if (gm.isGameOver()){
+        gm.lm.currentLevel = 0;
+        setup();
+    }
 }
 
 //--------------------------------------------------------------
@@ -74,8 +92,4 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
-void ofApp::onGameOver(){
-    
-    
-    
-}
+ 

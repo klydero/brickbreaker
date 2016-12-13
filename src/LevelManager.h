@@ -23,9 +23,10 @@ public:
     void draw();
     
     int currentLevel;
-    void nextLevel();
+    bool nextLevel();
     bool loadLevel(int levelNumber);
-    void update(Ball& ball);
+    bool isLevelComplete();
+    void update(Ball& ball, int& score, Paddle& paddle);
     
     
 private:

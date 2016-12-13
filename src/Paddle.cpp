@@ -12,7 +12,7 @@ void Paddle::setup() {
 
     width  = 80;
     height = 15;
-    speed = 10;
+    speed = 15;
     color.set(255, 64, 91);
     position.set(ofGetWidth()/2, ofGetHeight() - 30);
 }

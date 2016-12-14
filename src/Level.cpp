@@ -25,20 +25,20 @@ void Level::update(Ball& ball, int& score, Paddle& paddle){
     
     for (int i = 0; i < rows.size(); i++) {
         for(int j = 0; j < rows[i].size(); j++) {
-<<<<<<< HEAD
+
             if (rows[i][j].shouldDestroy()) {
                  score += rows[i][j].score;
                 rows[i].erase(rows[i].begin() + j);
                 cout << score << endl;
             }
-=======
+
             if (rows[i][j].shouldDestroy()){
                 rows[i].erase(rows[i].begin()+ j);
                 
                 
             }
             
->>>>>>> origin/master
+
         }
     }
 }

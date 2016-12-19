@@ -16,9 +16,15 @@ Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int 
     width = _width;
     height = _height;
 <<<<<<< HEAD
+<<<<<<< HEAD
     hitTimes = 0;
 
 
+=======
+    
+    hitTimes = 0;
+
+>>>>>>> origin/master
 =======
     
     hitTimes = 0;

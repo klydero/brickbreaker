@@ -40,6 +40,9 @@ void Level::update(Ball& ball, int& score, Paddle& paddle){
 <<<<<<< HEAD
 =======
             
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 
         }

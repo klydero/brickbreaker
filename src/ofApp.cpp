@@ -7,10 +7,7 @@ void ofApp::setup(){
     //ofBackgroundGradient(ofColor::coral, ofColor::lavender);
     paddle.setup();
     ball.setup();
-<<<<<<< HEAD
-=======
-    
->>>>>>> origin/master
+
     gm.setup();
     scoreFont.load("Bitwise.ttf", 20);
     backgroundImage.load("background.jpg");
@@ -27,11 +24,11 @@ void ofApp::setup(){
 void ofApp::update(){
     paddle.move();
     ball.move(paddle);
-<<<<<<< HEAD
+
     gm.update(ball, paddle);
-=======
+
     gm.update(ball);
->>>>>>> origin/master
+
 }
 
 //--------------------------------------------------------------

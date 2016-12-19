@@ -17,10 +17,12 @@ Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int 
     height = _height;
 <<<<<<< HEAD
     hitTimes = 0;
+
+
 =======
     
     hitTimes = 0;
-    
+
 >>>>>>> origin/master
     isNull = false;
 }
@@ -71,13 +73,11 @@ void Brick::update(Ball& ball){
             ball.direction.x *= -1;
         }
         
-<<<<<<< HEAD
+
         hitTimes++;
-=======
-        hitTimes ++;
         
     
->>>>>>> origin/master
+
     }
     
     
@@ -124,14 +124,12 @@ void Brick::draw(){
 
 void Brick::hit(){
     
-    
-<<<<<<< HEAD
+
 }
 
 bool Brick::shouldDestroy() {
     return hitTimes == toughness;
-=======
->>>>>>> origin/master
+
 }
 
 Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {

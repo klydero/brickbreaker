@@ -15,27 +15,11 @@ Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int 
     position = _position;
     width = _width;
     height = _height;
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     hitTimes = 0;
 
 
-=======
-    
-    hitTimes = 0;
 
->>>>>>> origin/master
-=======
-    
-    hitTimes = 0;
-
->>>>>>> origin/master
-=======
-    hitTimes = 0;
-
-
->>>>>>> Stashed changes
     isNull = false;
 }
 
@@ -71,14 +55,9 @@ void Brick::update(Ball& ball){
         }
         
 
-<<<<<<< Updated upstream
-        hitTimes++;
-        
-=======
 
         hitTimes ++;
->>>>>>> Stashed changes
-    
+
 
     }
     
@@ -158,13 +137,13 @@ bool Brick::shouldDestroy() {
     return hitTimes == toughness;
 
 }
-=======
+
 }
 
 
 
 
->>>>>>> Stashed changes
+
 
 Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
     

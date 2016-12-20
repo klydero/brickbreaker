@@ -33,7 +33,7 @@ public:
     ofColor color;
     float bounciness;
     std::vector<Particles> particles;
-    
+    ofSoundPlayer bumpsound;
     
     bool intersectsRect(float cx,
                         float cy,

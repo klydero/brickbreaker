@@ -30,6 +30,7 @@ class ofApp : public ofBaseApp{
     ofTrueTypeFont scoreFont;
     ofImage backgroundImage;
     ofSoundPlayer brickBreakerMusic;
+    ofSoundPlayer clicksound;
     
     
 

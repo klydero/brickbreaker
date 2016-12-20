@@ -12,12 +12,14 @@ void ofApp::setup(){
     scoreFont.load("Bitwise.ttf", 20);
     backgroundImage.load("background.jpg");
     
-    brickBreakerMusic.load("sounds/brickbreakeraudio.mp3");
-    brickBreakerMusic.setVolume(1.0f);
-    brickBreakerMusic.play();
-    brickBreakerMusic.setLoop(true);
-    
-    
+//    brickBreakerMusic.load("sounds/brickbreakeraudio.mp3");
+//    brickBreakerMusic.setVolume(0.4f);
+//    brickBreakerMusic.play();
+//    brickBreakerMusic.setLoop(true);
+//    
+//    clicksound.load("startsound.mp3");
+//    clicksound.setVolume(.0f);
+//    
 }
 
 //--------------------------------------------------------------
@@ -26,8 +28,6 @@ void ofApp::update(){
     ball.move(paddle);
 
     gm.update(ball, paddle);
-
-    gm.update(ball);
 
 }
 
@@ -75,6 +75,8 @@ void ofApp::mousePressed(int x, int y, int button){
         gm.lm.currentLevel = 0;
         setup();
     }
+    
+    clicksound.play();
 }
 
 //--------------------------------------------------------------

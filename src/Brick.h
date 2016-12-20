@@ -41,9 +41,10 @@ public:
     int height;
     int score;
     std::vector<Particles>particles;
+    ofSoundPlayer bumpsound;
+
     
     bool isNull;
-    bool shouldDestroy();
     
     
 protected:

@@ -15,6 +15,7 @@ Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int 
     position = _position;
     width = _width;
     height = _height;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
     hitTimes = 0;
@@ -30,6 +31,11 @@ Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int 
     hitTimes = 0;
 
 >>>>>>> origin/master
+=======
+    hitTimes = 0;
+
+
+>>>>>>> Stashed changes
     isNull = false;
 }
 
@@ -38,6 +44,9 @@ Brick::~Brick() {
 }
 
 void Brick::setup(){
+    
+    
+   
     
 }
 
@@ -55,36 +64,42 @@ void Brick::update(Ball& ball){
         
         BRICK_SIDE brickSide = getCollisionSide(ball);
         if (brickSide == SIDE_TOP || brickSide == SIDE_BOTTOM) {
-           
-            int numberOfParticles = 20;
             
-            
-            for (int i = 0; i < numberOfParticles; i++) {
-                
-                
-                Particles p;
-                p.position.x = position.x;
-                p.position.y = position.y;
-                
-                p.velocity.x = ofRandom(-10, 10);
-                p.velocity.y = ofRandom(-10, 10);
-                
-                p.drag = 1;
-                
-                particles.push_back(p);
-            
-                ball.direction.y *= -1; }
             
         } else {
             ball.direction.x *= -1;
         }
         
 
+<<<<<<< Updated upstream
         hitTimes++;
         
+=======
+
+        hitTimes ++;
+>>>>>>> Stashed changes
     
 
     }
+    
+    int numberOfParticles = 20;
+    
+    
+    for (int i = 0; i < numberOfParticles; i++) {
+        
+        
+        Particles p;
+        p.position.x = position.x;
+        p.position.y = position.y;
+        
+        p.velocity.x = ofRandom(-10, 10);
+        p.velocity.y = ofRandom(-10, 10);
+        
+        p.drag = 1;
+        
+        particles.push_back(p);
+        
+        ball.direction.y *= -1; }
     
     
 }
@@ -93,6 +108,12 @@ void Brick::draw(){
     
     ofSetColor(color);
     ofRect(position.x -width/2, position.y - height/2, width, height);
+    
+    
+}
+
+void Brick::hit(){
+    
     auto particleIterator = particles.begin();
     
     
@@ -126,8 +147,8 @@ void Brick::draw(){
     }
 
     
-}
 
+<<<<<<< Updated upstream
 void Brick::hit(){
     
 
@@ -137,8 +158,18 @@ bool Brick::shouldDestroy() {
     return hitTimes == toughness;
 
 }
+=======
+}
+
+
+
+
+>>>>>>> Stashed changes
 
 Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
+    
+ 
+
     
     //A == topLeft
     //B == topRight
@@ -180,6 +211,12 @@ Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
             return SIDE_BOTTOM;
         }
     }
+    
+    
+
+    bumpsound.load("sounds/bumpsound.mp3");
+    bumpsound.setVolume(1.0f);
+    bumpsound.play();
 }
 
 bool Brick::_isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition) {
@@ -188,8 +225,11 @@ bool Brick::_isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition) {
 
 
 bool Brick::shouldDestroy(){
+
+    
     
     if (hitTimes == toughness){
+        
         return true;
     }
 

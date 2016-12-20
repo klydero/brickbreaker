@@ -10,7 +10,7 @@
 
 
 LevelManager::LevelManager() {
-    currentLevel = 0;
+    currentLevel = 1;
 }
 
 LevelManager::~LevelManager() {
@@ -79,7 +79,7 @@ bool LevelManager::loadLevel(int levelNumber){
 
 
 bool LevelManager::nextLevel(){
-    return loadLevel(currentLevel+1);
+    return loadLevel(currentLevel+2);
 }
 
 bool LevelManager::isLevelComplete() {

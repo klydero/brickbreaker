@@ -10,11 +10,15 @@
 
 void Ball::setup() {
     
-    color.set(138,0,184);
+    color.set(97, 253, 186) ;
     size = 20;
     speed = 6;
     position.set(ofGetWidth(), ofGetHeight());
     direction.set(1, 1);
+    
+    bumpsound.load("sounds/bumpsound.mp3");
+    bumpsound.setVolume(1.0f);
+  
 }
 
 void Ball::move(const Paddle& paddle ) {
@@ -37,6 +41,7 @@ void Ball::move(const Paddle& paddle ) {
                               paddle.position.y - paddle.height * 0.5,
                               paddle.position.x + paddle.width * 0.5,
                               paddle.position.y + paddle.height * 0.5)) {
+              bumpsound.play();
             
             int numberOfParticles = 20;
             

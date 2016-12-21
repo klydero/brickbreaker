@@ -56,8 +56,10 @@ void Brick::update(Ball& ball){
         
 
 
-        hitTimes ++;
+        hitTimes++;
+        
 
+    
 
     }
     
@@ -80,8 +82,8 @@ void Brick::update(Ball& ball){
         
         ball.direction.y *= -1; }
     
-    
 }
+
 
 void Brick::draw(){
     
@@ -126,19 +128,8 @@ void Brick::hit(){
     }
 
     
-
-<<<<<<< Updated upstream
-void Brick::hit(){
-    
-
 }
 
-bool Brick::shouldDestroy() {
-    return hitTimes == toughness;
-
-}
-
-}
 
 
 
@@ -198,6 +189,7 @@ Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
     bumpsound.play();
 }
 
+
 bool Brick::_isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition) {
     return ((point2.x - point1.x) * (ballPosition.y - point1.y) - (point2.y - point1.y) * (ballPosition.x - point1.x)) > 0;
 }
@@ -215,3 +207,4 @@ bool Brick::shouldDestroy(){
     return false;
     
 }
+

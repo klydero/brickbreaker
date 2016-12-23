@@ -10,7 +10,7 @@
 
 
 LevelManager::LevelManager() {
-    currentLevel = 1;
+    currentLevel = 2;
 }
 
 LevelManager::~LevelManager() {
@@ -93,4 +93,6 @@ bool LevelManager::isLevelComplete() {
 
     return true;
 };
+
+
 

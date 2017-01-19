@@ -18,9 +18,15 @@ Brick::Brick(GameManager* _gm ,int _toughness, int _score, ofColor _color, ofVec
     position = _position;
     width = _width;
     height = _height;
+<<<<<<< HEAD
 
     hitTimes = 0;
 
+=======
+
+    hitTimes = 0;
+
+>>>>>>> origin/master
 
 
     isNull = false;
@@ -80,6 +86,24 @@ void Brick::update(Ball& ball){
     
     
     
+<<<<<<< HEAD
+=======
+    for (int i = 0; i < numberOfParticles; i++) {
+        
+        
+        Particles p;
+        p.position.x = position.x;
+        p.position.y = position.y;
+        
+        p.velocity.x = ofRandom(-10, 10);
+        p.velocity.y = ofRandom(-10, 10);
+        
+        p.drag = 1;
+        
+        particles.push_back(p);
+        
+        ball.direction.y *= -1; }
+>>>>>>> origin/master
     
 }
 
@@ -93,6 +117,7 @@ void Brick::draw(){
     
 
     
+<<<<<<< HEAD
     
 }
 
@@ -102,6 +127,8 @@ void Brick::hit(){
    
    
     
+=======
+>>>>>>> origin/master
 }
 
 

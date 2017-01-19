@@ -26,7 +26,11 @@ void Level::update(Ball& ball, int& score, Paddle& paddle){
         for(int j = 0; j < rows[i].size(); j++) {
             if (rows[i][j].shouldDestroy()) {
                 score += rows[i][j].score;
+<<<<<<< HEAD
                 rows[i].erase(rows[i].begin() + j); //I think that this part of the code is loading the next level but maybe it can't find the next level so the game is crashing but im not sure.
+=======
+                rows[i].erase(rows[i].begin() + j); //I think that this part of the code is loading the next level but maybe it can't find the next level so the game is crashing but im not sure. 
+>>>>>>> origin/master
                 cout << score << endl;
             }
         }

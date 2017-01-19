@@ -7,36 +7,26 @@
 //
 
 #include "Brick.h"
+#include "GameManager.h"
 
-Brick::Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int _width, int _height){
+
+Brick::Brick(GameManager* _gm ,int _toughness, int _score, ofColor _color, ofVec2f _position, int _width, int _height){
+    gm = _gm;
     toughness = _toughness;
     score = _score;
     color = _color;
     position = _position;
     width = _width;
     height = _height;
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     hitTimes = 0;
 
 
-=======
-    
-    hitTimes = 0;
 
->>>>>>> origin/master
-=======
-    
-    hitTimes = 0;
-
->>>>>>> origin/master
-=======
-    hitTimes = 0;
-
-
->>>>>>> Stashed changes
     isNull = false;
+    
+    
+    
 }
 
 Brick::~Brick() {
@@ -45,14 +35,17 @@ Brick::~Brick() {
 
 void Brick::setup(){
     
+    brickhitsound.load("sounds/bumpsound.mp3");
+    brickhitsound.setVolume(1.0f);
     
-   
     
 }
 
 //returns true if brick has been destroyed
 
 void Brick::update(Ball& ball){
+    
+
     
     if (ball.intersectsRect(ball.position.x,
                             ball.position.y,
@@ -62,8 +55,14 @@ void Brick::update(Ball& ball){
                             position.x + width/2,
                             position.y + height/2)) {
         
+        
+        gm->brickHit(ball.position.x, ball.position.y);
+
+        
         BRICK_SIDE brickSide = getCollisionSide(ball);
         if (brickSide == SIDE_TOP || brickSide == SIDE_BOTTOM) {
+            
+            
             
             
         } else {
@@ -71,38 +70,19 @@ void Brick::update(Ball& ball){
         }
         
 
-<<<<<<< Updated upstream
+
         hitTimes++;
         
-=======
 
-        hitTimes ++;
->>>>>>> Stashed changes
     
 
     }
     
-    int numberOfParticles = 20;
     
-    
-    for (int i = 0; i < numberOfParticles; i++) {
-        
-        
-        Particles p;
-        p.position.x = position.x;
-        p.position.y = position.y;
-        
-        p.velocity.x = ofRandom(-10, 10);
-        p.velocity.y = ofRandom(-10, 10);
-        
-        p.drag = 1;
-        
-        particles.push_back(p);
-        
-        ball.direction.y *= -1; }
     
     
 }
+
 
 void Brick::draw(){
     
@@ -110,61 +90,25 @@ void Brick::draw(){
     ofRect(position.x -width/2, position.y - height/2, width, height);
     
     
+    
+
+    
+    
 }
 
 void Brick::hit(){
     
-    auto particleIterator = particles.begin();
     
+   
+   
     
-    
-    while (particleIterator != particles.end())
-        
-    {
-        
-        particleIterator->update();
-        
-        
-        
-        if (particleIterator->age > ofRandom(10, 50))
-            
-        {
-            
-            particleIterator = particles.erase(particleIterator);
-            
-        }
-        
-        else
-            
-        {
-            
-            ofDrawRectangle(particleIterator-> position.x, particleIterator->position.y, 20, 20);
-            
-            ++particleIterator;
-            
-        }
-        
-    }
-
-    
-
-<<<<<<< Updated upstream
-void Brick::hit(){
-    
-
-}
-
-bool Brick::shouldDestroy() {
-    return hitTimes == toughness;
-
-}
-=======
 }
 
 
 
 
->>>>>>> Stashed changes
+
+
 
 Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
     
@@ -184,6 +128,9 @@ Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
                                   ofVec2f(position.x + width/2, position.y - height/2),
                                   ball.position);
     
+    
+    
+    
     if (isAboveAC)
     {
         
@@ -191,6 +138,7 @@ Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
         {
             //top edge has intersected
             return SIDE_TOP;
+            
         }
         else
         {
@@ -210,14 +158,16 @@ Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
             //bottom edge intersected
             return SIDE_BOTTOM;
         }
+        
+        
     }
     
     
 
-    bumpsound.load("sounds/bumpsound.mp3");
-    bumpsound.setVolume(1.0f);
-    bumpsound.play();
+   
+    
 }
+
 
 bool Brick::_isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition) {
     return ((point2.x - point1.x) * (ballPosition.y - point1.y) - (point2.y - point1.y) * (ballPosition.x - point1.x)) > 0;
@@ -228,11 +178,15 @@ bool Brick::shouldDestroy(){
 
     
     
-    if (hitTimes == toughness){
+    if (hitTimes >= toughness){
         
-        return true;
+        
+            
+           return true;
+            
     }
 
     return false;
     
 }
+

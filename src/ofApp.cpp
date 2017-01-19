@@ -12,14 +12,18 @@ void ofApp::setup(){
     scoreFont.load("Bitwise.ttf", 20);
     backgroundImage.load("background.jpg");
     
-//    brickBreakerMusic.load("sounds/brickbreakeraudio.mp3");
-//    brickBreakerMusic.setVolume(0.4f);
-//    brickBreakerMusic.play();
-//    brickBreakerMusic.setLoop(true);
-//    
-//    clicksound.load("startsound.mp3");
-//    clicksound.setVolume(.0f);
-//    
+    brickBreakerMusic.load("sounds/brickbreakeraudio.mp3");
+    brickBreakerMusic.setVolume(0.4f);
+    brickBreakerMusic.play();
+    brickBreakerMusic.setLoop(true);
+    
+    clicksound.load("startsound.mp3");
+    clicksound.setVolume(.0f);
+//
+    
+    endTime = false;
+    startTime = ofGetElapsedTimeMillis();
+    
 }
 
 //--------------------------------------------------------------
@@ -43,6 +47,13 @@ void ofApp::draw(){
     
     ofSetColor(255);
     scoreFont.drawString("Score: " + ofToString(gm.score), 20, 20);
+    
+    float timer = ofGetElapsedTimeMillis() - startTime;
+    
+    if (timer <= endTime){
+        
+        endTime = true;
+    }
 }
 
 //--------------------------------------------------------------
@@ -76,7 +87,7 @@ void ofApp::mousePressed(int x, int y, int button){
         setup();
     }
     
-    clicksound.play();
+    //clicksound.play();
 }
 
 //--------------------------------------------------------------

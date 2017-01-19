@@ -18,8 +18,15 @@ void Ball::setup() {
     
     bumpsound.load("sounds/bumpsound.mp3");
     bumpsound.setVolume(1.0f);
+    wallbumpsound.load("sounds/wallbumpsound.mp3");
+    wallbumpsound.setVolume(1.0f);
+    resetsound.load("sounds/resetsound.mp3");
+    resetsound.setVolume(1.0f);
   
+    pImage.load("Sparks_WEB.png");
 }
+
+
 
 void Ball::move(const Paddle& paddle ) {
     
@@ -27,10 +34,42 @@ void Ball::move(const Paddle& paddle ) {
     
         if (position.x + size / 2 >= ofGetWidth() ||
             position.x - size / 2 <= 0) {
+            auto particleIterator = particles.begin();
+            
+            
+            
+            while (particleIterator != particles.end())
+                
+            {
+                
+                particleIterator->update();
+                
+                
+                
+                if (particleIterator->age > ofRandom(10, 50))
+                    
+                {
+                    
+                    particleIterator = particles.erase(particleIterator);
+                    
+                }
+                
+                else
+                    
+                {
+                    
+                    ofDrawRectangle(particleIterator-> position.x, particleIterator->position.y, 20, 20);
+                    
+                    ++particleIterator;
+                    
+                }
+            }
+            wallbumpsound.play();
             direction.x *= -1;
         }
         
         if (position.y - size / 2 <= 0) {
+            wallbumpsound.play();
             direction.y *= -1;
         }
         
@@ -68,6 +107,8 @@ void Ball::move(const Paddle& paddle ) {
             
         }
         
+
+        
         position.x += speed * direction.x;
         position.y += speed * direction.y;
     
@@ -79,12 +120,26 @@ void Ball::move(const Paddle& paddle ) {
     }
     
     if (position.y + size/2 >= ofGetHeight()) {
+        
+        resetsound.play();
+        
         reset();
     }
     
 }
 
 void Ball::draw() {
+    
+    for (auto & p: particles){
+        
+        
+        pImage.draw(p.position);
+        
+        //particles.draw();
+        
+    }
+
+    
     
     auto particleIterator = particles.begin();
     
@@ -110,7 +165,7 @@ void Ball::draw() {
             
         {
             
-            ofDrawRectangle(particleIterator-> position.x, particleIterator->position.y, 20, 20);
+//            ofDrawRectangle(particleIterator-> position.x, particleIterator->position.y, 20, 20);
             
             ++particleIterator;
             
@@ -142,7 +197,12 @@ bool Ball::intersectsRect(float cx, float cy, float radius, float left, float to
     float dy = closestY - cy;
     
     return ( dx * dx + dy * dy ) <= radius * radius;
+    
 }
+
+
+
+
 
 
 

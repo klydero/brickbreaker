@@ -12,12 +12,16 @@
 #include "ofMain.h"
 #include "Level.h"
 
+
+class GameManager;
+
 class LevelManager{
     
 public:
     
     
     LevelManager();
+    LevelManager(GameManager* _gm);
     ~LevelManager();
     
     void draw();
@@ -27,9 +31,11 @@ public:
     bool loadLevel(int levelNumber);
     bool isLevelComplete();
     void update(Ball& ball, int& score, Paddle& paddle);
-    
-    
+
+    GameManager* gm = nullptr;
+
 private:
+
     bool isGameOver;
     vector <Level> levels;
     

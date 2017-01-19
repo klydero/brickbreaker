@@ -35,8 +35,11 @@ class GameManager {
     int score;
     LevelManager lm;
     
-protected:
+    void brickHit(int x, int y);
     
+protected:
+    std::vector<Particles>particles;
+
     ofImage _menuScreen;
     ofImage _endScreen;
     

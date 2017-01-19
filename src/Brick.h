@@ -13,6 +13,9 @@
 #include "Ball.h"
 
 
+class GameManager;
+
+
 class Brick {
 public:
     
@@ -23,8 +26,12 @@ public:
         SIDE_BOTTOM
     };
     
-    Brick(){isNull = true;};
-    Brick(int _toughness, int _score, ofColor _color, ofVec2f _position, int _width, int _height);
+    Brick(GameManager* _gm):
+        gm(_gm)
+    {
+        isNull = true;
+    };
+    Brick(GameManager* _gm, int _toughness, int _score, ofColor _color, ofVec2f _position, int _width, int _height);
     ~Brick();
     
     void hit();
@@ -40,14 +47,22 @@ public:
     int width;
     int height;
     int score;
-    std::vector<Particles>particles;
-    ofSoundPlayer bumpsound;
+
+    ofSoundPlayer brickhitsound;
+    
+    ofImage brickParticle;
 
     
     bool isNull;
     
+    float startTime;
+    bool endTime;
+
+    
     
 protected:
+    GameManager* gm;
+    
     int hitTimes;
     
     bool _isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition);

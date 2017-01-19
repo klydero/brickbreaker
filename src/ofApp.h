@@ -26,12 +26,14 @@ class ofApp : public ofBaseApp{
         Ball ball;
         Paddle paddle;
         GameManager gm;
+
     
     ofTrueTypeFont scoreFont;
     ofImage backgroundImage;
     ofSoundPlayer brickBreakerMusic;
     ofSoundPlayer clicksound;
     
-    
+    float startTime;
+    bool endTime;
 
 };

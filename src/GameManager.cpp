@@ -15,6 +15,8 @@ void GameManager::setup(){
     _showMenu = true;
     _showEnd = false;
     score = 0;
+    
+    lm.gm = this;
     lm.loadLevel(1);
     
 }
@@ -34,6 +36,39 @@ void GameManager::update(Ball& ball, Paddle& paddle) {
         }
         
     }
+    
+    
+    auto particleIterator = particles.begin();
+    
+    
+    
+    while (particleIterator != particles.end())
+        
+    {
+        
+        particleIterator->update();
+        
+        
+        
+        if (particleIterator->age > ofRandom(40, 50))
+            
+        {
+            
+            particleIterator = particles.erase(particleIterator);
+            
+        }
+        
+        else
+            
+        {
+            
+            //ofDrawRectangle(particleIterator-> position.x, particleIterator->position.y, 20, 20);
+            
+            ++particleIterator;
+            
+        }
+    }
+
 }
 
 void GameManager::draw() {
@@ -53,6 +88,40 @@ void GameManager::draw() {
         lm.draw();
     }
     
+    
+    
+    
+    auto particleIterator = particles.begin();
+    
+    
+    
+    while (particleIterator != particles.end())
+        
+    {
+        
+        particleIterator->update();
+        
+        
+        
+        if (particleIterator->age > ofRandom(40, 90))
+            
+        {
+            
+            particleIterator = particles.erase(particleIterator);
+            
+        }
+        
+        else
+            
+        {
+            
+            ofDrawCircle(particleIterator-> position.x, particleIterator->position.y, 10, 10);
+            
+            ++particleIterator;
+            
+        }
+        
+    }
 }
 
 void GameManager::launchBall() {
@@ -81,4 +150,30 @@ void GameManager:: mousePressed(int mouseX, int mouseY, int button ){
 bool GameManager::isGameOver(){
     
     return _showEnd;
+}
+
+
+void GameManager::brickHit(int x, int y)
+{
+    cout << "brick was hit ... " << endl;
+    
+    int numberOfParticles = 20;
+    
+    for (int i = 0; i < numberOfParticles; i++) {
+        
+        
+        Particles p;
+        p.position.x = x;
+        p.position.y = y;
+        
+        p.velocity.x = ofRandom(-10, 10);
+        p.velocity.y = ofRandom(-10, 10);
+        
+        p.drag = 1;
+        
+        particles.push_back(p);
+        
+//        ball.direction.y *= -1;
+        
+    }
 }

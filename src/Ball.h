@@ -14,6 +14,7 @@
 #include "ofBaseApp.h"
 #include "Particles.h"
 
+
 class Ball{
     
 public:
@@ -33,7 +34,12 @@ public:
     ofColor color;
     float bounciness;
     std::vector<Particles> particles;
+
     ofSoundPlayer bumpsound;
+    ofSoundPlayer wallbumpsound;
+    ofSoundPlayer resetsound;
+    
+    ofImage pImage;
     
     bool intersectsRect(float cx,
                         float cy,

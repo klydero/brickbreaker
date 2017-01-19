@@ -7,10 +7,17 @@
 //
 
 #include "LevelManager.h"
+#include "GameManager.h"
 
 
 LevelManager::LevelManager() {
-    currentLevel = 1;
+    gm = nullptr;
+    currentLevel = 0;
+}
+
+LevelManager::LevelManager(GameManager* _gm) {
+    gm = _gm;
+    currentLevel = 0;
 }
 
 LevelManager::~LevelManager() {
@@ -52,16 +59,16 @@ bool LevelManager::loadLevel(int levelNumber){
                     
                 }
                 if (block == '1'){
-                    row.push_back(Brick(1, 10, ofColor::red, ofVec2f(((j+1)*brickWidth) - brickWidth / 2,((i+1)*brickHeight) - brickHeight / 2), brickWidth, brickHeight));
+                    row.push_back(Brick(gm, 1, 10, ofColor::red, ofVec2f(((j+1)*brickWidth) - brickWidth / 2,((i+1)*brickHeight) - brickHeight / 2), brickWidth, brickHeight));
                 }
                 if (block == '2'){
-                    row.push_back(Brick(2, 20, ofColor::blueViolet, ofVec2f((j+1)*brickWidth - brickWidth / 2,(i+1)*brickHeight - brickHeight / 2), brickWidth, brickHeight));
+                    row.push_back(Brick(gm, 2, 20, ofColor::blueViolet, ofVec2f((j+1)*brickWidth - brickWidth / 2,(i+1)*brickHeight - brickHeight / 2), brickWidth, brickHeight));
                 }
                 if (block == '3'){
-                    row.push_back(Brick(3, 50, ofColor::purple, ofVec2f((j+1)*brickWidth - brickWidth / 2,(i+1)*brickHeight- brickHeight / 2), brickWidth, brickHeight));
+                    row.push_back(Brick(gm, 3, 50, ofColor::purple, ofVec2f((j+1)*brickWidth - brickWidth / 2,(i+1)*brickHeight- brickHeight / 2), brickWidth, brickHeight));
                 }
                 if (block == '4'){
-                    row.push_back(Brick(4, 100, ofColor::chocolate, ofVec2f((j+1)*brickWidth - brickWidth / 2,(i+1)*brickHeight - brickHeight / 2), brickWidth, brickHeight));
+                    row.push_back(Brick(gm, 4, 100, ofColor::chocolate, ofVec2f((j+1)*brickWidth - brickWidth / 2,(i+1)*brickHeight - brickHeight / 2), brickWidth, brickHeight));
                 }
             }
             
@@ -79,7 +86,7 @@ bool LevelManager::loadLevel(int levelNumber){
 
 
 bool LevelManager::nextLevel(){
-    return loadLevel(currentLevel+2);
+    return loadLevel(currentLevel+1);
 }
 
 bool LevelManager::isLevelComplete() {

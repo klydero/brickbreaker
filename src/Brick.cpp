@@ -10,31 +10,13 @@ Brick::Brick(GameManager* _gm ,int _toughness, int _score, ofColor _color, ofVec
     position = _position;
     width = _width;
     height = _height;
-<<<<<<< Updated upstream
-
-
-    hitTimes = 0;
 
 
 
-    hitTimes = 0;
+    hitTimes = 0;  
+    
+    
 
-
-
-
-=======
-    
-    
-    hitTimes = 0;
-    
-    
-    
-    hitTimes = 0;
-    
-    
-    
-    
->>>>>>> Stashed changes
     isNull = false;
     
     
@@ -80,8 +62,7 @@ void Brick::update(Ball& ball){
         } else {
             ball.direction.x *= -1;
         }
-        
-<<<<<<< Updated upstream
+
 
 
         hitTimes++;
@@ -94,8 +75,7 @@ void Brick::update(Ball& ball){
     
 
     for (int i = 0; i < numberOfParticles; i++) {
-=======
->>>>>>> Stashed changes
+
         
         
         hitTimes++;
@@ -103,17 +83,15 @@ void Brick::update(Ball& ball){
         
         
         
-<<<<<<< Updated upstream
+
         ball.direction.y *= -1; }
 
-=======
     }
     
     
     
    
-    
->>>>>>> Stashed changes
+
     
 }
 
@@ -122,31 +100,14 @@ void Brick::draw(){
     
     ofSetColor(color);
     ofRect(position.x -width/2, position.y - height/2, width, height);
-    
-    
-    
-<<<<<<< Updated upstream
 
-
-=======
-    
-    
->>>>>>> Stashed changes
     
 }
 
 void Brick::hit(){
     
     
-<<<<<<< Updated upstream
-   
-   
 
-=======
-    
-    
-    
->>>>>>> Stashed changes
 }
 
 

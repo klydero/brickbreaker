@@ -5,7 +5,7 @@
 //  Created by Miriam Kac on 9/16/15.
 //
 //
-
+#include "Brick.h"
 #include "GameManager.h"
 
 void GameManager::setup(){

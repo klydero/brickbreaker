@@ -1,11 +1,3 @@
-//
-//  Bricks.cpp
-//  BrickBreakerGame
-//
-//  Created by Miriam Kac on 9/16/15.
-//
-//
-
 #include "Brick.h"
 #include "GameManager.h"
 
@@ -18,6 +10,7 @@ Brick::Brick(GameManager* _gm ,int _toughness, int _score, ofColor _color, ofVec
     position = _position;
     width = _width;
     height = _height;
+<<<<<<< Updated upstream
 
 
     hitTimes = 0;
@@ -29,6 +22,19 @@ Brick::Brick(GameManager* _gm ,int _toughness, int _score, ofColor _color, ofVec
 
 
 
+=======
+    
+    
+    hitTimes = 0;
+    
+    
+    
+    hitTimes = 0;
+    
+    
+    
+    
+>>>>>>> Stashed changes
     isNull = false;
     
     
@@ -51,7 +57,7 @@ void Brick::setup(){
 
 void Brick::update(Ball& ball){
     
-
+    
     
     if (ball.intersectsRect(ball.position.x,
                             ball.position.y,
@@ -63,7 +69,7 @@ void Brick::update(Ball& ball){
         
         
         gm->brickHit(ball.position.x, ball.position.y);
-
+        
         
         BRICK_SIDE brickSide = getCollisionSide(ball);
         if (brickSide == SIDE_TOP || brickSide == SIDE_BOTTOM) {
@@ -75,6 +81,7 @@ void Brick::update(Ball& ball){
             ball.direction.x *= -1;
         }
         
+<<<<<<< Updated upstream
 
 
         hitTimes++;
@@ -87,21 +94,26 @@ void Brick::update(Ball& ball){
     
 
     for (int i = 0; i < numberOfParticles; i++) {
+=======
+>>>>>>> Stashed changes
         
         
-        Particles p;
-        p.position.x = position.x;
-        p.position.y = position.y;
+        hitTimes++;
         
-        p.velocity.x = ofRandom(-10, 10);
-        p.velocity.y = ofRandom(-10, 10);
         
-        p.drag = 1;
         
-        particles.push_back(p);
         
+<<<<<<< Updated upstream
         ball.direction.y *= -1; }
 
+=======
+    }
+    
+    
+    
+   
+    
+>>>>>>> Stashed changes
     
 }
 
@@ -113,17 +125,28 @@ void Brick::draw(){
     
     
     
+<<<<<<< Updated upstream
 
 
+=======
+    
+    
+>>>>>>> Stashed changes
     
 }
 
 void Brick::hit(){
     
     
+<<<<<<< Updated upstream
    
    
 
+=======
+    
+    
+    
+>>>>>>> Stashed changes
 }
 
 
@@ -134,8 +157,8 @@ void Brick::hit(){
 
 Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
     
- 
-
+    
+    
     
     //A == topLeft
     //B == topRight
@@ -185,8 +208,8 @@ Brick::BRICK_SIDE Brick::getCollisionSide(const Ball& ball) {
     }
     
     
-
-   
+    
+    
     
 }
 
@@ -197,18 +220,17 @@ bool Brick::_isAboveLine(ofVec2f point1, ofVec2f point2, ofVec2f ballPosition) {
 
 
 bool Brick::shouldDestroy(){
-
+    
     
     
     if (hitTimes >= toughness){
         
         
-            
-           return true;
-            
+        
+        return true;
+        
     }
-
+    
     return false;
     
 }
-

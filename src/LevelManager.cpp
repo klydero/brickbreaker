@@ -11,7 +11,7 @@
 
 
 LevelManager::LevelManager() {
-<<<<<<< HEAD
+
     gm = nullptr;
     currentLevel = 0;
 }
@@ -19,9 +19,9 @@ LevelManager::LevelManager() {
 LevelManager::LevelManager(GameManager* _gm) {
     gm = _gm;
     currentLevel = 0;
-=======
+
     currentLevel = 2;
->>>>>>> origin/master
+
 }
 
 LevelManager::~LevelManager() {

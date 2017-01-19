@@ -73,23 +73,6 @@ void Brick::update(Ball& ball){
     }
     
     
-
-    for (int i = 0; i < numberOfParticles; i++) {
-
-        
-        
-        hitTimes++;
-        
-        
-        
-        
-
-        ball.direction.y *= -1; }
-
-    }
-    
-    
-    
    
 
     
